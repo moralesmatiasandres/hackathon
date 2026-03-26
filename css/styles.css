@@ -605,7 +605,7 @@ body {
 /* === Responsive === */
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 1rem;
   }
@@ -616,6 +616,14 @@ body {
 
   .category-pills {
     padding: 0.75rem 1rem 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-pills::-webkit-scrollbar {
+    display: none;
   }
 
   .speaker-filter-row {
