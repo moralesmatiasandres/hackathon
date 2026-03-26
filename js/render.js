@@ -9,6 +9,8 @@ function formatDuration(ms) {
 function createCard(item) {
   const card = document.createElement('article');
   card.className = 'card';
+  card.tabIndex = 0;
+  card.setAttribute('role', 'button');
 
   const thumbnailSrc = item.thumbnail || 'https://placehold.co/640x360/2a2a2a/666?text=No+Thumbnail';
 
@@ -44,6 +46,12 @@ export function renderGrid(items, container, onCardClick) {
     const card = createCard(item);
     if (onCardClick) {
       card.addEventListener('click', () => onCardClick(item));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onCardClick(item);
+        }
+      });
     }
     fragment.appendChild(card);
   }
